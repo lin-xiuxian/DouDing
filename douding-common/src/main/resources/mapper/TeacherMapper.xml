@@ -69,10 +69,21 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-
+    id, name, nickname, image, position, motto, intro
   </sql>
   <select id="selectByExample" parameterType="com.douding.server.domain.TeacherExample" resultMap="BaseResultMap">
-
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
 

@@ -29,7 +29,10 @@ public class TeacherController {
 
     @RequestMapping("/list")
     public ResponseDto list(PageDto pageDto){
-        return null;
+        ResponseDto<PageDto> responseDto = new ResponseDto<>();
+        teacherService.list(pageDto);
+        responseDto.setContent(pageDto);
+        return responseDto;
     }
 
     @PostMapping("/save")

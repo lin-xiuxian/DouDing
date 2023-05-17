@@ -40,7 +40,6 @@ public class MemberController {
 
     @RequestMapping("/list")
     public ResponseDto list(PageDto pageDto){
-
         ResponseDto<PageDto> responseDto = new ResponseDto<>();
         memberService.list(pageDto);
         responseDto.setContent(pageDto);

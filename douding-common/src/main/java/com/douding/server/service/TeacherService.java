@@ -7,6 +7,8 @@ import com.douding.server.domain.TeacherExample;
 import com.douding.server.dto.CategoryDto;
 import com.douding.server.dto.TeacherDto;
 import com.douding.server.dto.PageDto;
+import com.douding.server.exception.BusinessException;
+import com.douding.server.exception.BusinessExceptionCode;
 import com.douding.server.mapper.TeacherMapper;
 import com.douding.server.util.CopyUtil;
 import com.douding.server.util.UuidUtil;
@@ -71,7 +73,6 @@ public class TeacherService {
      * @param id
      */
     public TeacherDto findById(String id) {
-
         return null;
     }
 }//end class
