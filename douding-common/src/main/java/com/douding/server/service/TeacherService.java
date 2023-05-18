@@ -44,19 +44,23 @@ public class TeacherService {
     }
 
     public void save(TeacherDto teacherDto) {
-
-
+        Teacher teacher = CopyUtil.copy(teacherDto, Teacher.class);
+        if(teacher.getId().isEmpty()){
+            this.insert(teacher);
+        } else {
+            this.update(teacher);
+        }
     }
 
     //新增数据
     private void insert(Teacher teacher) {
-
-
+        teacher.setId(UuidUtil.getShortUuid());
+        teacherMapper.insert(teacher);
     }
 
     //更新数据
     private void update(Teacher teacher) {
-
+        teacherMapper.updateByPrimaryKey(teacher);
     }
 
     public void delete(String id) {

@@ -95,7 +95,11 @@
 
   </delete>
   <insert id="insert" parameterType="com.douding.server.domain.Teacher">
-
+    insert into teacher
+    <include refid="Base_Column_List"/>
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
+    #{image,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{motto,jdbcType=VARCHAR},
+    #{intro,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.douding.server.domain.Teacher">
 
@@ -110,9 +114,37 @@
 
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.douding.server.domain.Teacher">
-
+    update teacher
+    <set>
+      <if test="name != null">
+        name = #{.name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="motto != null">
+        motto = #{motto,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+    </set>
   </update>
   <update id="updateByPrimaryKey" parameterType="com.douding.server.domain.Teacher">
-
+    update teacher
+    set name = #{name,jdbcType=VARCHAR},
+        nickname = #{nickname,jdbcType=VARCHAR},
+        image = #{image,jdbcType=VARCHAR},
+        position = #{position,jdbcType=VARCHAR},
+        motto = #{motto,jdbcType=VARCHAR},
+        intro = #{intro,jdbcType=VARCHAR}
+    where
+        id = #{id,jdbcType=CHAR};
   </update>
 </mapper>

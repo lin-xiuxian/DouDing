@@ -37,8 +37,18 @@ public class TeacherController {
 
     @PostMapping("/save")
     public ResponseDto save(@RequestBody TeacherDto teacherDto){
+        ValidatorUtil.require(teacherDto.getName(), "name");
+        ValidatorUtil.length(teacherDto.getName(), "name", 1, 8);
+        ValidatorUtil.length(teacherDto.getNickname(), "nickname", 1, 50);
+        ValidatorUtil.length(teacherDto.getImage(), "image", 1, 100);
+        ValidatorUtil.length(teacherDto.getPosition(), "position", 1, 50);
+        ValidatorUtil.length(teacherDto.getMotto(), "motto", 1, 50);
+        ValidatorUtil.length(teacherDto.getIntro(), "intro", 1, 500);
+        teacherService.save(teacherDto);
 
-        return null;
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setContent(teacherDto);
+        return responseDto;
     }
     
     @DeleteMapping("/delete/{id}")
