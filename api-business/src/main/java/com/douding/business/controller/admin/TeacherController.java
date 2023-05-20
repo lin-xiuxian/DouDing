@@ -60,9 +60,10 @@ public class TeacherController {
 
     @RequestMapping("/all")
     public ResponseDto all(){
-
-
-        return null;
+        ResponseDto responseDto = new ResponseDto();
+        List<TeacherDto> teacherDtoList = teacherService.all();
+        responseDto.setContent(teacherDtoList);
+        return responseDto;
     }
 
 }//end class

@@ -68,7 +68,9 @@ public class TeacherService {
     }
 
     public List<TeacherDto> all() {
-       return null;
+        TeacherExample teacherExample = new TeacherExample();
+        List<Teacher> teacherList = teacherMapper.selectByExample(teacherExample);
+        return CopyUtil.copyList(teacherList, TeacherDto.class);
     }
 
 
