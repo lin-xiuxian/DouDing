@@ -45,7 +45,7 @@ public class TeacherService {
 
     public void save(TeacherDto teacherDto) {
         Teacher teacher = CopyUtil.copy(teacherDto, Teacher.class);
-        if(teacher.getId().isEmpty()){
+        if(teacher.getId() == null || " ".equals(teacher.getId())){
             this.insert(teacher);
         } else {
             this.update(teacher);
@@ -64,7 +64,7 @@ public class TeacherService {
     }
 
     public void delete(String id) {
-
+        teacherMapper.deleteByPrimaryKey(id);
     }
 
     public List<TeacherDto> all() {

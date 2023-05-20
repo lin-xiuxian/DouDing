@@ -53,8 +53,9 @@ public class TeacherController {
     
     @DeleteMapping("/delete/{id}")
     public ResponseDto delete(@PathVariable String id){
-
-        return null;
+        ResponseDto responseDto = new ResponseDto();
+        teacherService.delete(id);
+        return responseDto;
     }
 
     @RequestMapping("/all")
